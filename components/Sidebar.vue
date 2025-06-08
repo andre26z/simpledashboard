@@ -15,8 +15,8 @@
         <span v-if="isOpen" class="mx-4 font-medium">Visão geral</span>
       </NuxtLink>
 
-      <NuxtLink 
-        to="/analises" 
+      <a 
+        href="#" 
         class="flex items-center p-2 mt-5 rounded-md transition-colors"
         :class="[
           isOpen ? '' : 'justify-center',
@@ -25,10 +25,10 @@
       >
          <Icon name="uil:chart-pie" class="w-6 h-6 flex-shrink-0" />
         <span v-if="isOpen" class="mx-4 font-medium">Análises</span>
-      </NuxtLink>
+      </a>
 
-      <NuxtLink 
-         to="/clientes" 
+      <a 
+      href="#"  
          class="flex items-center p-2 mt-5 rounded-md transition-colors"
          :class="[
            isOpen ? '' : 'justify-center',
@@ -37,7 +37,7 @@
         >
          <Icon name="uil:users-alt" class="w-6 h-6 flex-shrink-0" />
         <span v-if="isOpen" class="mx-4 font-medium">Clientes</span>
-      </NuxtLink>
+    </a>
 
       <NuxtLink 
         to="/assinaturas/nova" 
@@ -51,8 +51,8 @@
         <span v-if="isOpen" class="mx-4 font-medium">Assinaturas</span>
       </NuxtLink>
 
-      <NuxtLink 
-        to="/configuracoes" 
+    <a 
+      href="#"  
         class="flex items-center p-2 mt-5 rounded-md transition-colors"
         :class="[
           isOpen ? '' : 'justify-center',
@@ -61,7 +61,7 @@
       >
         <Icon name="uil:cog" class="w-6 h-6 flex-shrink-0" />
         <span v-if="isOpen" class="mx-4 font-medium">Configurações</span>
-      </NuxtLink>
+    </a>
     </nav>
   </div>
 </template>
