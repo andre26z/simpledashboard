@@ -1,6 +1,6 @@
 <template>
   <Header @toggle-sidebar="isSidebarOpen = !isSidebarOpen" />
-  <div class="flex h-screen bg-gray-50">
+  <div class="flex h-screen bg-gray-75">
     <Sidebar :isOpen="isSidebarOpen" />
 
     <div class="flex-1 flex flex-col overflow-hidden">
