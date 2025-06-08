@@ -8,15 +8,29 @@
     <div class="bg-white p-6 md:p-8 rounded-lg shadow-sm">
       <form @submit.prevent="submitForm">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-
           <div>
             <label for="subscription-name" class="block text-sm font-medium text-gray-700">Nome da assinatura</label>
-            <input type="text" id="subscription-name" v-model="formData.name" placeholder="Digite o nome da assinatura" class="mt-1 block w-full rounded-sm p-3 border border-gray-400 shadow-sm focus:border-gray-600 focus:ring-gray-600 text-sm"/>
+            <input
+              type="text"
+              id="subscription-name"
+              v-model="formData.name"
+              placeholder="Digite o nome da assinatura"
+              class="mt-1 block w-full rounded-sm p-3 border border-gray-400 shadow-sm focus:border-gray-600 focus:ring-gray-600 text-sm"
+              required
+            />
           </div>
 
           <div>
             <label for="subscription-amount" class="block text-sm font-medium text-gray-700">Valor da cobrança</label>
-            <input type="text" id="subscription-amount" v-model="formData.amount" placeholder="Digite o valor da cobrança" class="mt-1 block w-full rounded-sm p-3 border border-gray-400 shadow-sm focus:border-gray-600 focus:ring-gray-600 text-sm"/>
+            <input
+              type="text"
+              id="subscription-amount"
+              :value="formattedAmount"
+              @input="handleAmountInput"
+              placeholder="R$ 0,00"
+              class="mt-1 block w-full rounded-sm p-3 border border-gray-400 shadow-sm focus:border-gray-600 focus:ring-gray-600 text-sm"
+              required
+            />
           </div>
 
           <div class="md:col-span-1">
@@ -143,9 +157,19 @@
         </div>
 
         <div class="mt-8 flex justify-end">
-          <button type="submit" class="inline-flex items-center gap-2 rounded-md border border-transparent bg-gray-800 px-6 py-3 text-sm md:text-base font-medium text-white shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
-            <Icon name="uil:arrow-circle-right" class="h-5 w-5" />
-            Gerar assinatura
+          <button
+            type="submit"
+            :disabled="isLoading"
+            class="inline-flex items-center gap-2 rounded-md border border-transparent bg-gray-800 px-6 py-3 text-sm md:text-base font-medium text-white shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <template v-if="isLoading">
+              <Icon name="uil:spinner" class="animate-spin h-5 w-5" />
+              <span>Gerando...</span>
+            </template>
+            <template v-else>
+              <Icon name="uil:arrow-circle-right" class="h-5 w-5" />
+              <span>Gerar assinatura</span>
+            </template>
           </button>
         </div>
       </form>
@@ -154,23 +178,59 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed, nextTick } from 'vue'; // 1. Import nextTick
+import { useRouter } from 'vue-router';
+import { useToast } from '~/composables/useToast';
 import ToggleSwitch from '~/components/ToggleSwitch.vue';
+
+const router = useRouter();
+const { showToast } = useToast();
+
+const isLoading = ref(false);
 
 const formData = ref({
   name: '',
-  amount: '',
+  amount: null,
   frequency: 'Mensal',
   description: '',
-  // Changed: Use a single string to store the selected payment method
   paymentMethod: 'credit_card', 
-  // Changed: Use a single string for the selected tax option
   taxOption: 'comRepasse',
-  // This is already correct for a single-choice selection
   duration: 'unlimited', 
   billingDate: new Date().toISOString().slice(0, 10),
   isProportional: false,
 });
+
+// The computed property for formatting the value remains the same
+const formattedAmount = computed(() => {
+  if (formData.value.amount === null) {
+    return '';
+  }
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(formData.value.amount);
+});
+
+// 2. Create a new method to handle the input event directly
+function handleAmountInput(event) {
+  // Get the current input value
+  const value = event.target.value;
+  // Clean the value to store only digits
+  let digitsOnly = value.replace(/\D/g, '');
+
+  // Update the underlying data model
+  if (digitsOnly) {
+    formData.value.amount = parseFloat(digitsOnly) / 100;
+  } else {
+    formData.value.amount = null;
+  }
+
+  // Use nextTick to force the input to display the re-formatted value immediately.
+  // This overwrites any invalid characters (like letters) the user typed.
+  nextTick(() => {
+    event.target.value = formattedAmount.value;
+  });
+}
 
 const frequencyOptions = ['Semanal', 'Mensal', 'Trimestral', 'Semestral', 'Anual'];
 
@@ -180,7 +240,35 @@ const paymentMethodOptions = [
   { value: 'credit_card', label: 'Cartão de Crédito', icon: 'uil:credit-card' },
 ];
 
-function submitForm() {
-  console.log('Form data submitted:', formData.value);
+async function submitForm() {
+  if (!formData.value.name || !formData.value.amount) {
+    showToast('Nome da assinatura e Valor são obrigatórios.');
+    return;
+  }
+  
+  isLoading.value = true;
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData.value), 
+    });
+
+    if (!response.ok) {
+      throw new Error('A resposta da rede não foi "ok"');
+    }
+
+    showToast('Assinatura gerada');
+
+    setTimeout(() => {
+      router.push('/');
+    }, 1500); 
+
+  } catch (error) {
+    console.error('Falha ao gerar assinatura:', error);
+    isLoading.value = false;
+  }
 }
 </script>
