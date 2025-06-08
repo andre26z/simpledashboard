@@ -3,9 +3,10 @@
      <div class="flex items-center gap-4">
  
        <div class="flex flex-shrink-0 items-center gap-4">
-        
-         <img src="/images/logo.svg" alt="Logo" class="h-8 w-auto">
-       </div>
+         <NuxtLink to="/">
+         <img src="/images/logo.svg" alt="Logo" class="h-8 w-auto cursor-pointer">
+        </NuxtLink>
+        </div>
  
        <div class="flex w-full items-center justify-end mr-5">
  
