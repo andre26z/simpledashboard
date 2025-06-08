@@ -1,0 +1,33 @@
+{
+    "overview": {
+      "tpv": {
+        "title": "Progressão de TPV",
+        "percentageChange": 16.8,
+        "currentMonth": 15149365.27,
+        "previousMonth": 12970346.98
+      },
+      "averageTicket": {
+        "title": "Ticket médio",
+        "percentageChange": 7.11,
+        "currentMonth": 421.67,
+        "previousMonth": 393.68
+      },
+      "transactionCount": {
+        "title": "Quantidade de transações",
+        "percentageChange": 9.05,
+        "currentMonth": 12927,
+        "previousMonth": 16946
+      },
+      "markup": {
+        "title": "Percentual markup",
+        "percentageChange": 16.7,
+        "currentMonth": 2.1,
+        "previousMonth": 1.8
+      }
+    },
+    "tpvProgression": {
+      "labels": ["OUTUBRO", "NOVEMBRO", "DEZEMBRO"],
+      "data": [10200000, 13600000, 17000000]
+    }
+  }
+  
