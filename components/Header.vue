@@ -1,7 +1,7 @@
 <template>
    <header class="flex items-center justify-between px-6 h-20 bg-white border-b z-10 shadow-sm">
      <div class="flex items-center">
-       <img src="/images/logo.svg" alt="Sua Marca" class="h-10" />
+       <img src="public/images/logo.svg" alt="Sua Marca" class="h-10" />
      </div>
  
      <div class="flex items-center flex-grow justify-center px-10">

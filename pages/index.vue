@@ -5,10 +5,9 @@
       <h3 class="text-gray-700 text-2xl font-semibold">Visão geral</h3>
     </div>
 
+    <div class="grid grid-cols-1 lg:grid-cols-6 gap-6">
 
-    <div class="grid gap-6 mb-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-      <!-- TPV Card (Special Styling) -->
-      <div class="bg-white text-gray-800 rounded-lg p-6 shadow-sm flex flex-col justify-between">
+      <div class="lg:col-span-3 bg-white text-gray-800 rounded-lg p-6 shadow-sm flex flex-col">
         <div>
           <div class="flex justify-between items-start">
             <h4 class="font-semibold">
@@ -36,37 +35,39 @@
               </p>
             </div>
         </div>
+
+        <div class="mt-8 flex-grow">
+           <LineChart :chartData="chartData" :chartOptions="chartOptions" />
+        </div>
       </div>
 
-      <!-- Other Stat Cards -->
-      <StatCard 
-        :title="data.overview.averageTicket.title"
-        :currentValue="formatCurrency(data.overview.averageTicket.currentMonth)"
-        :previousValue="formatCurrency(data.overview.averageTicket.previousMonth)"
-        :percentageChange="data.overview.averageTicket.percentageChange"
-      />
-      <StatCard 
-        :title="data.overview.transactionCount.title"
-        :currentValue="data.overview.transactionCount.currentMonth.toLocaleString('pt-BR')"
-        :previousValue="data.overview.transactionCount.previousMonth.toLocaleString('pt-BR')"
-        :percentageChange="data.overview.transactionCount.percentageChange"
-      />
-       <StatCard 
-        :title="data.overview.markup.title"
-        :currentValue="data.overview.markup.currentMonth.toString()"
-        :previousValue="data.overview.markup.previousMonth.toString()"
-        :percentageChange="data.overview.markup.percentageChange"
-      />
-    </div>
+      <div class="lg:col-span-3 flex flex-col gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <StatCard 
+              :title="data.overview.averageTicket.title"
+              :currentValue="formatCurrency(data.overview.averageTicket.currentMonth)"
+              :previousValue="formatCurrency(data.overview.averageTicket.previousMonth)"
+              :percentageChange="data.overview.averageTicket.percentageChange"
+            />
+            <StatCard 
+              :title="data.overview.transactionCount.title"
+              :currentValue="data.overview.transactionCount.currentMonth.toLocaleString('pt-BR')"
+              :previousValue="data.overview.transactionCount.previousMonth.toLocaleString('pt-BR')"
+              :percentageChange="data.overview.transactionCount.percentageChange"
+            />
+        </div>
 
-    <div class="mt-8">
-       <div class="bg-white p-6 rounded-lg shadow-sm">
-          <LineChart :chartData="chartData" :chartOptions="chartOptions" />
-       </div>
+        <StatCard 
+          :title="data.overview.markup.title"
+          :currentValue="data.overview.markup.currentMonth.toString()"
+          :previousValue="data.overview.markup.previousMonth.toString()"
+          :percentageChange="data.overview.markup.percentageChange"
+        />
+      </div>
+
     </div>
   </div>
 </template>
-
 <script setup>
 import { ref, computed } from 'vue';
 import StatCard from '~/components/StatCard.vue';
