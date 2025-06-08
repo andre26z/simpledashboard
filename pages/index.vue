@@ -5,7 +5,7 @@
       <h3 class="text-gray-700 text-2xl font-semibold">Visão geral</h3>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-6 gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-7 gap-6">
 
       <div class="lg:col-span-3 bg-white text-gray-800 rounded-lg p-6 shadow-sm flex flex-col">
         <div>
@@ -21,14 +21,14 @@
             </div>
           </div>
         </div>
-        <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="bg-gray-800 text-white rounded-lg p-4 flex flex-col justify-center">
+        <div class="mt-4 grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 gap-4">
+            <div class="bg-gray-800 text-white rounded-lg p-6 flex flex-col justify-center">
               <p class="text-xs text-gray-300">Mês atual</p>
-              <p class="text-xl font-bold">
+              <p class="text-xl text-green-400 font-bold">
                 {{ formatCurrency(data.overview.tpv.currentMonth) }}
               </p>
             </div>
-            <div class="bg-white rounded-lg p-4 flex flex-col justify-center border">
+            <div class="bg-gray-100 rounded-lg p-4 flex flex-col justify-center border">
               <p class="text-xs text-gray-500">Mês anterior</p>
               <p class="font-semibold text-gray-700">
                 {{ formatCurrency(data.overview.tpv.previousMonth) }}
@@ -41,7 +41,7 @@
         </div>
       </div>
 
-      <div class="lg:col-span-3 flex flex-col gap-6">
+      <div class="lg:col-span-4 flex flex-col gap-6">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <StatCard 
               :title="data.overview.averageTicket.title"
