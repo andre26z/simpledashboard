@@ -28,7 +28,7 @@
                 {{ formatCurrency(data.overview.tpv.currentMonth) }}
               </p>
             </div>
-            <div class="bg-gray-100 rounded-lg p-4 flex flex-col justify-center border">
+            <div class="bg-gray-100 rounded-lg p-4 flex flex-col justify-center border border-gray-200">
               <p class="text-xs text-gray-500">Mês anterior</p>
               <p class="text-xs md:text-xl font-semibold text-gray-700">
                 {{ formatCurrency(data.overview.tpv.previousMonth) }}
