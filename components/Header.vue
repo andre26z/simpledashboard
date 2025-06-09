@@ -1,6 +1,6 @@
 <template>
-   <header class="bg-white p-3 border-b border-gray-200">
-     <div class="flex items-center gap-4">
+   <header class="bg-white p-3 ">
+     <div class="flex items-center gap-4 mr-8">
  
        <div class="flex flex-shrink-0 items-center gap-4">
          <NuxtLink to="/">

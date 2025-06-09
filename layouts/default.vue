@@ -13,14 +13,16 @@
       <Icon :name="isSidebarOpen ? 'uil:angle-left-b' : 'uil:angle-right-b'" class="h-6 w-6 text-gray-600" />
     </button>
 
-    <div class="flex-1 flex flex-col overflow-hidden">
+    <div class="flex-1 flex flex-col pr-4 overflow-hidden">
 
       <main class="flex-1 p-6 overflow-y-auto bg-gray-100 rounded-lg">
         <slot />
+
+        
       </main>
       
       <footer class="p-4 text-center">
-    
+
       </footer>
     </div>
   </div>

@@ -24,13 +24,13 @@
         <div class="mt-4 grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 gap-4">
             <div class="bg-gray-800 text-white rounded-lg p-6 flex flex-col justify-center">
               <p class="text-xs text-gray-300">Mês atual</p>
-              <p class="text-xl text-green-400 font-bold">
+              <p class="text-xs md:text-xl text-green-400 font-bold">
                 {{ formatCurrency(data.overview.tpv.currentMonth) }}
               </p>
             </div>
             <div class="bg-gray-100 rounded-lg p-4 flex flex-col justify-center border">
               <p class="text-xs text-gray-500">Mês anterior</p>
-              <p class="font-semibold text-gray-700">
+              <p class="text-xs md:text-xl font-semibold text-gray-700">
                 {{ formatCurrency(data.overview.tpv.previousMonth) }}
               </p>
             </div>
