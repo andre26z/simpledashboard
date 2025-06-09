@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex flex-col bg-white shadow-lg transition-all duration-300 ease-in-out"
+  <div class="relative flex flex-col bg-white  transition-all duration-300 ease-in-out"
        :class="isOpen ? 'w-64' : 'w-20'">
 
     <nav class="flex-1 px-4 py-4">

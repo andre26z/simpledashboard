@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex items-center space-x-4 mb-6">
+    <div class="flex items-center space-x-4 mb-6  ">
       <Icon name="uil:apps" class="w-8 h-8 text-gray-600" />
       <h3 class="text-gray-700 text-2xl font-semibold">Visão geral</h3>
     </div>
@@ -84,14 +84,14 @@ const formatCurrency = (value) => {
   }).format(value);
 };
 
-// Computed property to format data for the chart component
+
 const chartData = computed(() => ({
   labels: data.value.tpvProgression.labels,
   datasets: [
     {
       label: 'Progressão de TPV',
       backgroundColor: 'rgba(75, 192, 192, 0.2)',
-      borderColor: '#1F2937', // dark gray
+      borderColor: '#1F2937', 
       pointBackgroundColor: '#1F2937',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',

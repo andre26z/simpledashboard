@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <div class="relative flex h-screen bg-gray-75">
+  <div class="relative flex h-screen bg-white">
     
     <Sidebar :isOpen="isSidebarOpen" />
 
@@ -15,11 +15,16 @@
 
     <div class="flex-1 flex flex-col overflow-hidden">
 
-      <main class="flex-1 p-6 overflow-y-auto">
+      <main class="flex-1 p-6 overflow-y-auto bg-gray-100 rounded-lg">
         <slot />
       </main>
+      
+      <footer class="p-4 text-center">
+    
+      </footer>
     </div>
   </div>
+ 
 </template>
 
 <script setup>
