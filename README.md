@@ -1,12 +1,13 @@
+
 # Documentação do Projeto: Dashboard Nuxt App
 
 ## Instalação
 
-```javascript
+```bash
 npm install
 ```
 
-```javascript
+```bash
 npm run dev
 ```
 
@@ -22,14 +23,14 @@ A aplicação possui uma interface **limpa e orientada a dados**, estilizada com
 
 Com base no `package.json`, as principais tecnologias utilizadas são:
 
-| Biblioteca        | Versão   | Propósito                                                                 |
-|------------------|----------|--------------------------------------------------------------------------|
-| Nuxt             | ^3.17.5  | Framework principal baseado em Vue.js para construção da aplicação       |
-| Vue              | ^3.5.16  | Framework JavaScript subjacente                                          |
-| TailwindCSS      | ^4.1.8   | Framework CSS utility-first para desenvolvimento rápido de UI           |
-| Chart.js         | ^4.4.1   | Biblioteca poderosa para visualizações de dados                          |
-| vue-chartjs      | ^5.3.0   | Wrapper do Chart.js para Vue, facilitando a integração                   |
-| @nuxt/icon       | ^1.13.0  | Módulo Nuxt para incorporar ícones SVG facilmente (ex: Unicons)          |
+| Biblioteca    | Versão  | Propósito                                                               |
+|---------------|---------|-------------------------------------------------------------------------|
+| Nuxt          | ^3.17.5 | Framework principal baseado em Vue.js para construção da aplicação      |
+| Vue           | ^3.5.16 | Framework JavaScript subjacente                                         |
+| TailwindCSS   | ^4.1.8  | Framework CSS utility-first para desenvolvimento rápido de UI          |
+| Chart.js      | ^4.4.1  | Biblioteca poderosa para visualizações de dados                        |
+| vue-chartjs   | ^5.3.0  | Wrapper do Chart.js para Vue, facilitando a integração                 |
+| @nuxt/icon    | ^1.13.0 | Módulo Nuxt para incorporar ícones SVG facilmente (ex: Unicons)        |
 
 ---
 
@@ -105,7 +106,7 @@ A estrutura segue o padrão do Nuxt 3, organizada por responsabilidade.
 
 ---
 
-#### `Sidebar.vue` (Nome Inferido)
+#### `Sidebar.vue` (nome inferido)
 
 **Propósito**: Barra lateral de navegação
 
@@ -132,7 +133,7 @@ A estrutura segue o padrão do Nuxt 3, organizada por responsabilidade.
 
 ---
 
-#### `Toast.vue` (Nome Inferido)
+#### `Toast.vue` (nome inferido)
 
 **Propósito**: Exibir notificações (sucesso/alerta)
 
@@ -151,7 +152,7 @@ A estrutura segue o padrão do Nuxt 3, organizada por responsabilidade.
 **Propósito**: Sistema global de toasts
 
 **Padrão de Projeto**: Singleton  
-`ref toasts` definido fora da função para compartilhamento global de estado
+`ref toasts` definido fora da função para compartilhamento global de estado.
 
 **Exportações**:
 
@@ -161,6 +162,47 @@ A estrutura segue o padrão do Nuxt 3, organizada por responsabilidade.
 
 ---
 
-## 4. Considerações Finais
+## 4. Testes Automatizados
 
-O projeto apresenta uma arquitetura bem estruturada, com uso eficiente das capacidades do Nuxt 3 e Vue 3. O uso de `composables`, componentes modulares, e bibliotecas modernas garante **manutenibilidade e escalabilidade**. A experiência do usuário é reforçada por uma UI elegante e interações responsivas.
+A aplicação conta com **testes automatizados** utilizando o **Vitest**, garantindo a qualidade e confiabilidade das principais funcionalidades.
+
+### 4.1. Framework de Testes
+
+- **Vitest**: Framework de testes rápido e leve, integrado ao Vite.
+- **@vue/test-utils**: Utilitário para montar e testar componentes Vue.
+- **happy-dom**: Ambiente de DOM simulado para renderização de componentes.
+
+### 4.2. Abordagem de Testes
+
+- **Mocks e Stubs**: Uso de `vi` para mockar dependências como o roteador (`vue-router`) e o sistema de toasts (`useToast`).
+- **Testes de Interação**: Verifica se campos de input e eventos são disparados corretamente.
+- **Testes de Integração**: Simula envio de formulário, validação de campos e redirecionamento.
+- **Simulação de API**: Uso de `vi.fn()` para mockar chamadas HTTP.
+
+### 4.3. Execução dos Testes
+
+Executar todos os testes:
+
+```bash
+npm run test
+```
+
+Ou diretamente com Vitest:
+
+```bash
+npx vitest
+```
+
+### 4.4. Exemplos de Testes
+
+#### `pages/assinaturas/nova.vue`
+
+- **Validação de Campos**: Confirma que o valor é formatado corretamente como moeda brasileira (R$).
+- **Envio de Formulário**: Verifica toast em caso de campos obrigatórios vazios.
+- **Fluxo de Sucesso**: Simula envio bem-sucedido do formulário, exibindo toast de sucesso e redirecionando para a página inicial.
+
+---
+
+## 5. Considerações Finais
+
+O projeto apresenta uma arquitetura bem estruturada, com uso eficiente das capacidades do Nuxt 3 e Vue 3. A adição de testes automatizados reforça a **qualidade do código** e facilita a manutenção a longo prazo, garantindo que novas funcionalidades ou refatorações não quebrem funcionalidades existentes. A experiência do usuário é reforçada por uma UI elegante e interações responsivas.
