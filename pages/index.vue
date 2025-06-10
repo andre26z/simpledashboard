@@ -118,11 +118,11 @@ const chartOptions = ref({
             if (value >= 1000) return 'R$ ' + (value / 1000) + ' k';
             return 'R$ ' + value;
         },
-        stepSize: 3400000
+       
       },
       grid: {
         drawBorder: false,
-        color: '#E5E7EB', // gray-200
+        color: '#E5E7EB', 
       },
     },
     x: {
