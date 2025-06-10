@@ -160,7 +160,7 @@
           <button
             type="submit"
             :disabled="isLoading"
-            class="inline-flex items-center gap-2 rounded-md border border-transparent bg-gray-800 px-6 py-3 text-sm md:text-base font-medium text-white shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            class="inline-flex items-center gap-2 cursor-pointer rounded-md border border-transparent bg-gray-800 px-6 py-3 text-sm md:text-base font-medium text-white shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <template v-if="isLoading">
               <Icon name="uil:spinner" class="animate-spin h-5 w-5" />
