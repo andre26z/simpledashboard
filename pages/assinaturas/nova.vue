@@ -36,7 +36,7 @@
           <div class="md:col-span-1">
             <label class="block text-sm font-medium text-gray-700">Qual a frequência da cobrança?</label>
             <div class="mt-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-5 gap-2">
-                <button v-for="freq in frequencyOptions" :key="freq" type="button" @click="formData.frequency = freq" :class="['cursor-pointer rounded-md py-1 md:py-2 px-1 md:px-2 text-xs md:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600', formData.frequency === freq ? 'bg-gray-800 text-xs md:text-sm text-white hover:bg-gray-900' : 'bg-white text-gray-700 border border-gray-500 hover:bg-gray-50']">{{ freq }}</button>
+                <button v-for="freq in frequencyOptions" :key="freq" type="button" @click="formData.frequency = freq" :class="['cursor-pointer rounded-md py-1 md:py-2 px-1 md:px-2 text-xs xl:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 overflow-hidden focus:ring-gray-600', formData.frequency === freq ? ' overflow-hidden bg-gray-800 text-xs xl:text-sm text-white hover:bg-gray-900' : 'bg-white text-gray-700 border border-gray-500 hover:bg-gray-50']">{{ freq }}</button>
             </div>
         </div>
           
@@ -160,7 +160,7 @@
           <button
             type="submit"
             :disabled="isLoading"
-            class="inline-flex items-center gap-2 cursor-pointer rounded-md border border-transparent bg-gray-800 px-6 py-3 text-sm md:text-base font-medium text-white shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            class="inline-flex items-center gap-2 cursor-pointer rounded-md border border-transparent bg-gray-800 px-6 py-3 text-xs md:text-base font-medium text-white shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <template v-if="isLoading">
               <Icon name="uil:spinner" class="animate-spin h-5 w-5" />
@@ -178,7 +178,7 @@
 </template>
 
 <script setup>
-import { ref, computed, nextTick } from 'vue'; // 1. Import nextTick
+import { ref, computed, nextTick } from 'vue'; 
 import { useRouter } from 'vue-router';
 import { useToast } from '~/composables/useToast';
 import ToggleSwitch from '~/components/ToggleSwitch.vue';
