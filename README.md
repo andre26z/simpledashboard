@@ -21,7 +21,6 @@ A aplicação possui uma interface **limpa e orientada a dados**, estilizada com
 
 ## 2. Tecnologias Principais
 
-Com base no `package.json`, as principais tecnologias utilizadas são:
 
 | Biblioteca    | Versão  | Propósito                                                               |
 |---------------|---------|-------------------------------------------------------------------------|
